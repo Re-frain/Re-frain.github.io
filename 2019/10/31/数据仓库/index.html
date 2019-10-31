@@ -90,7 +90,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;1736812-4dbb86d5caab4976.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;873&#x2F;format&#x2F;webp">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;1736812-39d37d233f88dc51.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;799&#x2F;format&#x2F;webp">
 <meta property="og:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;1736812-b098105c2f24302a.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;667&#x2F;format&#x2F;webp">
-<meta property="og:updated_time" content="2019-10-31T01:43:53.816Z">
+<meta property="og:updated_time" content="2019-10-31T01:46:51.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;upload-images.jianshu.io&#x2F;upload_images&#x2F;1736812-a9ddfb0c007eb787.png?imageMogr2&#x2F;auto-orient&#x2F;strip%7CimageView2&#x2F;2&#x2F;w&#x2F;1102&#x2F;format&#x2F;webp">
 
@@ -402,14 +402,14 @@
       
 
       
-        <h1 id="数据仓库介绍"><a href="#数据仓库介绍" class="headerlink" title="数据仓库介绍"></a>数据仓库介绍</h1><h4 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h4><p>数据仓库是一个面向主题的、集成的、随时间变化的、但信息本身相对稳定的数据集合，用于对管理决策过程的支持。</p>
-<h4 id="二、数据仓库的四个特点"><a href="#二、数据仓库的四个特点" class="headerlink" title="二、数据仓库的四个特点"></a>二、数据仓库的四个特点</h4><ul>
+        <h1 id="数据仓库介绍"><a href="#数据仓库介绍" class="headerlink" title="数据仓库介绍"></a>数据仓库介绍</h1><h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>数据仓库是一个面向主题的、集成的、随时间变化的、但信息本身相对稳定的数据集合，用于对管理决策过程的支持。</p>
+<h2 id="二、数据仓库的四个特点"><a href="#二、数据仓库的四个特点" class="headerlink" title="二、数据仓库的四个特点"></a>二、数据仓库的四个特点</h2><ul>
 <li>面向主题：数据仓库都是基于某个明确主题，仅需要与该主题相关的数据，其他的无关细节数据将被排除掉</li>
 <li>集成的：从不同的数据源采集数据到同一个数据源，此过程会有一些ETL操作</li>
 <li>随时间变化：关键数据隐式或显式的基于时间变化</li>
 <li>数据仓库的数据是不可更新的：数据装入以后一般只进行查询操作，没有传统数据库的增删改操作。数据仓库的数据反映的是一段相当长的时间内历史数据的内容，是不同时点的<strong>数据库快照</strong>的集合，以及基于这些快照进行统计、综合和重组的导出数据，而不是联机处理的数据。</li>
 </ul>
-<h4 id="三、数据库与数据仓库的区别"><a href="#三、数据库与数据仓库的区别" class="headerlink" title="三、数据库与数据仓库的区别"></a>三、数据库与数据仓库的区别</h4><p>数据库：是一种逻辑概念，用来存放数据的仓库。通过数据库软件来实现。数据库由很多表组成，表是二维的，一张表里可以有很多字段。字段一字排开，对应的数据就一行一行写入表中。数据库的表，在于能够用二维表现多维关系。目前市面上流行的数据库都是二维数据库。如：Oracle、DB2、MySQL、Sybase、MS SQL Server等。</p>
+<h2 id="三、数据库与数据仓库的区别"><a href="#三、数据库与数据仓库的区别" class="headerlink" title="三、数据库与数据仓库的区别"></a>三、数据库与数据仓库的区别</h2><p>数据库：是一种逻辑概念，用来存放数据的仓库。通过数据库软件来实现。数据库由很多表组成，表是二维的，一张表里可以有很多字段。字段一字排开，对应的数据就一行一行写入表中。数据库的表，在于能够用二维表现多维关系。目前市面上流行的数据库都是二维数据库。如：Oracle、DB2、MySQL、Sybase、MS SQL Server等。</p>
 <blockquote>
 <p>业务数据库中的数据结构是为了完成交易而设计的，不是为了而查询和分析的便利设计的。<br>业务数据库大多是读写优化的，即又要读（查看商品信息），也要写（产生订单，完成支付）。</p>
 </blockquote>
@@ -417,8 +417,8 @@
 <p><strong>总结</strong><br>数据库 比较流行的有：MySQL, Oracle, SqlServer等<br>数据仓库 比较流行的有：AWS Redshift, Greenplum, Hive等。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1736812-a9ddfb0c007eb787.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1102/format/webp" alt="img"></p>
 <p>数据库与数据仓库的区别.png</p>
-<h4 id="四、数据仓库的应用"><a href="#四、数据仓库的应用" class="headerlink" title="四、数据仓库的应用"></a>四、数据仓库的应用</h4><p>1.数据分析、数据挖掘、人工智能、机器学习、风险控制、无人驾驶。<br>2.数据化运营、精准运营。<br>3.广告精准、智能投放。</p>
-<h4 id="五、数据仓库架构图"><a href="#五、数据仓库架构图" class="headerlink" title="五、数据仓库架构图"></a>五、数据仓库架构图</h4><p>ODS层：</p>
+<h2 id="四、数据仓库的应用"><a href="#四、数据仓库的应用" class="headerlink" title="四、数据仓库的应用"></a>四、数据仓库的应用</h2><p>1.数据分析、数据挖掘、人工智能、机器学习、风险控制、无人驾驶。<br>2.数据化运营、精准运营。<br>3.广告精准、智能投放。</p>
+<h2 id="五、数据仓库架构图"><a href="#五、数据仓库架构图" class="headerlink" title="五、数据仓库架构图"></a>五、数据仓库架构图</h2><p>ODS层：</p>
 <p>为临时存储层，是接口数据的临时存储区域，为后一步的数据处理做准备。一般来说ODS层的数据和源系统的数据是同构的，主要目的是简化后续数据加工处理的工作。从数据粒度上来说ODS层的数据粒度是最细的。ODS层的表通常包括两类，一个用于存储当前需要加载的数据，一个用于存储处理完后的历史数据。历史数据一般保存3-6个月后需要清除，以节省空间。但不同的项目要区别对待，如果源系统的数据量不大，可以保留更长的时间，甚至全量保存；</p>
 <p>PDW层：</p>
 <p>为数据仓库层，PDW层的数据应该是一致的、准确的、干净的数据，即对源系统数据进行了清洗（去除了杂质）后的数据。这一层的数据一般是遵循数据库第三范式的，其数据粒度通常和ODS的粒度相同。在PDW层会保存BI系统中所有的历史数据，例如保存10年的数据。</p>
@@ -428,10 +428,10 @@
 <p>为应用层，这层数据是完全为了满足具体的分析需求而构建的数据，也是星形或雪花结构的数据。从数据粒度来说是高度汇总的数据。从数据的广度来说，则并不一定会覆盖所有业务数据，而是DM层数据的一个真子集，从某种意义上来说是DM层数据的一个重复。从极端情况来说，可以为每一张报表在APP层构建一个模型来支持，达到以空间换时间的目的数据仓库的标准分层只是一个建议性质的标准，实际实施时需要根据实际情况确定数据仓库的分层，不同类型的数据也可能采取不同的分层方法。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1736812-4dbb86d5caab4976.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/873/format/webp" alt="img"></p>
 <p>数据仓库架构图.png</p>
-<h4 id="六、数据仓库技术"><a href="#六、数据仓库技术" class="headerlink" title="六、数据仓库技术"></a>六、数据仓库技术</h4><p>数据仓库技术是为了有效的把<strong>操作型数据</strong>集成到统一的环境中以提供<strong>决策型数据</strong>访问的各种技术和模块的总称。所做的一切都是为了让用户更快更方便查询所需要的信息，提供决策支持。</p>
+<h2 id="六、数据仓库技术"><a href="#六、数据仓库技术" class="headerlink" title="六、数据仓库技术"></a>六、数据仓库技术</h2><p>数据仓库技术是为了有效的把<strong>操作型数据</strong>集成到统一的环境中以提供<strong>决策型数据</strong>访问的各种技术和模块的总称。所做的一切都是为了让用户更快更方便查询所需要的信息，提供决策支持。</p>
 <p>从功能结构划分，数据仓库系统至少应该包含数据获取（Data Acquisition）、数据存储（Data Storage）、数据访问（Data Access）三个关键部分。</p>
 <p>在国内最优秀的互联网公司里(如阿里、腾讯)，<strong>很多数据引擎是架构在数据仓库之上的(如数据分析引擎、数据挖掘引擎、推荐引擎、可视化引擎等等)。</strong></p>
-<h4 id="七、数据仓库多维数据模型的基本概念"><a href="#七、数据仓库多维数据模型的基本概念" class="headerlink" title="七、数据仓库多维数据模型的基本概念"></a>七、数据仓库多维数据模型的基本概念</h4><ul>
+<h2 id="七、数据仓库多维数据模型的基本概念"><a href="#七、数据仓库多维数据模型的基本概念" class="headerlink" title="七、数据仓库多维数据模型的基本概念"></a>七、数据仓库多维数据模型的基本概念</h2><ul>
 <li><strong>主题（Subject）</strong></li>
 </ul>
 <p>主题就是指我们所要分析的具体方面。例如：某年某月某地区某机型某款App的安装情况。主题有两个元素：一是各个分析角度（维度），如时间位置；二是要分析的具体量度，该量度一般通过数值体现，如App安装量。</p>
@@ -705,7 +705,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据仓库介绍"><span class="nav-number">1.</span> <span class="nav-text">数据仓库介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、定义"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、数据仓库的四个特点"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">二、数据仓库的四个特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、数据库与数据仓库的区别"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">三、数据库与数据仓库的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、数据仓库的应用"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">四、数据仓库的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、数据仓库架构图"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">五、数据仓库架构图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六、数据仓库技术"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">六、数据仓库技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七、数据仓库多维数据模型的基本概念"><span class="nav-number">1.0.0.7.</span> <span class="nav-text">七、数据仓库多维数据模型的基本概念</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据仓库介绍"><span class="nav-number">1.</span> <span class="nav-text">数据仓库介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、定义"><span class="nav-number">1.1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、数据仓库的四个特点"><span class="nav-number">1.2.</span> <span class="nav-text">二、数据仓库的四个特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、数据库与数据仓库的区别"><span class="nav-number">1.3.</span> <span class="nav-text">三、数据库与数据仓库的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、数据仓库的应用"><span class="nav-number">1.4.</span> <span class="nav-text">四、数据仓库的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、数据仓库架构图"><span class="nav-number">1.5.</span> <span class="nav-text">五、数据仓库架构图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、数据仓库技术"><span class="nav-number">1.6.</span> <span class="nav-text">六、数据仓库技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、数据仓库多维数据模型的基本概念"><span class="nav-number">1.7.</span> <span class="nav-text">七、数据仓库多维数据模型的基本概念</span></a></li></ol></li></ol></div>
             
 
           </div>
