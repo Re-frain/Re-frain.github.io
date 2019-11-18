@@ -14,7 +14,8 @@
 <blockquote>
 <p>业务数据库中的数据结构是为了完成交易而设计的，不是为了而查询和分析的便利设计的。<br>业务数据库大多是读写优化的，即又要读（查看商品信息），也要写（产生订单，完成支付）。</p>
 </blockquote>
-<p>数据仓库：是数据库概念的升级。从逻辑上理解，数据库和数据仓库没有区别，都是通过数据库软件实现的存放数据的地方，只不过从数据量来说，数据仓库要比数据库更庞大得多。<strong>数据仓库主要用于数据挖掘和数据分析，辅助领导做决策。</strong><br><strong>数据仓库的表结构是依照分析需求，分析维度，分析指标进行设计的。</strong></p>
+<p>数据仓库：是数据库概念的升级。从逻辑上理解，数据库和数据仓库没有区别，都是通过数据库软件实现的存放数据的地方，只不过从数据量来说，数据仓库要比数据库更庞大得多。</p>
+<p><strong>数据仓库主要用于数据挖掘和数据分析，辅助领导做决策。</strong><br><strong>数据仓库的表结构是依照分析需求，分析维度，分析指标进行设计的。</strong></p>
 <p><strong>总结</strong><br>数据库 比较流行的有：MySQL, Oracle, SqlServer等<br>数据仓库 比较流行的有：AWS Redshift, Greenplum, Hive等。</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/1736812-a9ddfb0c007eb787.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1102/format/webp" alt="img"></p>
 <p>数据库与数据仓库的区别.png</p>
