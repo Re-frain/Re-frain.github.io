@@ -20,7 +20,9 @@
 <p>1.对开发人员而言，核心 sql 还是需要自己优化。 </p>
 <p>2.sql 和 java 编码分开，功能边界清晰，一个专注业务、一个专注数据。</p>
 <h3 id="1-4-Mybatis的下载"><a href="#1-4-Mybatis的下载" class="headerlink" title="1.4 Mybatis的下载"></a>1.4 Mybatis的下载</h3><p>地址:<a href="https://github.com/mybatis/mybatis-3/releases" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3/releases</a></p>
-<h2 id="第3章-MyBatis全局配置文件"><a href="#第3章-MyBatis全局配置文件" class="headerlink" title="第3章  MyBatis全局配置文件"></a>第3章  MyBatis全局配置文件</h2><h3 id="3-1-MyBatis全局配置文件简介"><a href="#3-1-MyBatis全局配置文件简介" class="headerlink" title="3.1 MyBatis全局配置文件简介"></a>3.1 MyBatis全局配置文件简介</h3><p>文件结构如下: </p>
+<h2 id="第3章-MyBatis全局配置文件"><a href="#第3章-MyBatis全局配置文件" class="headerlink" title="第3章  MyBatis全局配置文件"></a>第3章  MyBatis全局配置文件</h2><h3 id="3-1-MyBatis全局配置文件简介"><a href="#3-1-MyBatis全局配置文件简介" class="headerlink" title="3.1 MyBatis全局配置文件简介"></a>3.1 MyBatis全局配置文件简介</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>文件结构如下: </p>
 <p>configuration（配置）</p>
 <ul>
 <li><p>properties（属性）</p>
@@ -629,7 +631,169 @@
 
 
 
-<h2 id="第4章-MyBatis-SQL映射文件"><a href="#第4章-MyBatis-SQL映射文件" class="headerlink" title="第4章 MyBatis SQL映射文件"></a>第4章 MyBatis SQL映射文件</h2>]]></content>
+<h2 id="第4章-MyBatis-SQL映射文件"><a href="#第4章-MyBatis-SQL映射文件" class="headerlink" title="第4章 MyBatis SQL映射文件"></a>第4章 MyBatis SQL映射文件</h2><h3 id="4-1-MyBatis映射文件简介"><a href="#4-1-MyBatis映射文件简介" class="headerlink" title="4.1 MyBatis映射文件简介"></a>4.1 MyBatis映射文件简介</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br><span class="line">  &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>1.MyBatis 的真正强大在于它的映射语句，也是它的魔力所在。由于它的异常强大，映射器的 XML 文件就显得相对简单。如果拿它跟具有相同功能的 JDBC 代码进行对比，你会立即发现省掉了将近 95% 的代码。MyBatis 就是针对 SQL 构建的，并且比普通的方法做的更好。 </p>
+<p>2.SQL 映射文件有很少的几个顶级元素（按照它们应该被定义的顺序）： </p>
+<p>cache – 给定命名空间的缓存配置。 </p>
+<p>cache-ref – 其他命名空间缓存配置的引用。 </p>
+<p>resultMap – 是最复杂也是最强大的元素，用来描述如何从数据库结果集中来加载对象。 </p>
+<p>parameterMap – 已废弃！老式风格的参数映射。内联参数是首选,这个元素可能在将来被移除，这里不会记录。 </p>
+<p>sql – 可被其他语句引用的可重用语句块。 </p>
+<p>insert – 映射插入语句 </p>
+<p>update – 映射更新语句 </p>
+<p>delete – 映射删除语句 </p>
+<p>select – 映射查询语句</p>
+<h3 id="4-2-Mybatis-CRUD"><a href="#4-2-Mybatis-CRUD" class="headerlink" title="4.2 Mybatis CRUD"></a>4.2 Mybatis CRUD</h3><h4 id="4-2-1-select"><a href="#4-2-1-select" class="headerlink" title="4.2.1 select"></a>4.2.1 select</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	Mapper接口方法</span></span><br><span class="line"><span class="comment">	public People queryPeoById(int id);</span></span><br><span class="line"><span class="comment">	查询不需要写参数类型parameterType</span></span><br><span class="line"><span class="comment">	namespace:全类名</span></span><br><span class="line"><span class="comment">--&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.yyy.mapper.PeopleMapper"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryPeoById"</span> <span class="attr">resultType</span>=<span class="string">"com.yyy.entity.People"</span>&gt;</span></span><br><span class="line">  	select * from people where id=#&#123;id&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="select元素的属性"><a href="#select元素的属性" class="headerlink" title="select元素的属性"></a>select元素的属性</h5><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>id</code></td>
+<td align="left">在命名空间中唯一的标识符，可以被用来引用这条语句。</td>
+</tr>
+<tr>
+<td align="left"><code>parameterType</code></td>
+<td align="left"><strong>将会传入这条语句的参数类的完全限定名或别名。这个属性是可选的，因为 MyBatis 可以通过类型处理器（TypeHandler） 推断出具体传入语句的参数，默认值为未设置（unset）。</strong></td>
+</tr>
+<tr>
+<td align="left">parameterMap</td>
+<td align="left">这是引用外部 parameterMap 的已经被废弃的方法。请使用内联参数映射和 parameterType 属性。</td>
+</tr>
+<tr>
+<td align="left"><code>resultType</code></td>
+<td align="left">从这条语句中返回的期望类型的类的完全限定名或别名。 注意如果返回的是集合，那应该设置为集合包含的类型，而不是集合本身。可以使用 resultType 或 resultMap，但不能同时使用。</td>
+</tr>
+<tr>
+<td align="left"><code>resultMap</code></td>
+<td align="left">外部 resultMap 的命名引用。结果集的映射是 MyBatis 最强大的特性，如果你对其理解透彻，许多复杂映射的情形都能迎刃而解。可以使用 resultMap 或 resultType，但不能同时使用。</td>
+</tr>
+<tr>
+<td align="left"><code>flushCache</code></td>
+<td align="left">将其设置为 true 后，只要语句被调用，都会导致本地缓存和二级缓存被清空，默认值：false。</td>
+</tr>
+<tr>
+<td align="left"><code>useCache</code></td>
+<td align="left">将其设置为 true 后，将会导致本条语句的结果被二级缓存缓存起来，默认值：对 select 元素为 true。</td>
+</tr>
+<tr>
+<td align="left"><code>timeout</code></td>
+<td align="left">这个设置是在抛出异常之前，驱动程序等待数据库返回请求结果的秒数。默认值为未设置（unset）（依赖驱动）。</td>
+</tr>
+<tr>
+<td align="left"><code>fetchSize</code></td>
+<td align="left">这是一个给驱动的提示，尝试让驱动程序每次批量返回的结果行数和这个设置值相等。 默认值为未设置（unset）（依赖驱动）。</td>
+</tr>
+<tr>
+<td align="left"><code>statementType</code></td>
+<td align="left">STATEMENT，PREPARED 或 CALLABLE 中的一个。这会让 MyBatis 分别使用 Statement，PreparedStatement 或 CallableStatement，默认值：PREPARED。</td>
+</tr>
+<tr>
+<td align="left"><code>resultSetType</code></td>
+<td align="left">FORWARD_ONLY，SCROLL_SENSITIVE, SCROLL_INSENSITIVE 或 DEFAULT（等价于 unset） 中的一个，默认值为 unset （依赖驱动）。</td>
+</tr>
+<tr>
+<td align="left"><code>databaseId</code></td>
+<td align="left">如果配置了数据库厂商标识（databaseIdProvider），MyBatis 会加载所有的不带 databaseId 或匹配当前 databaseId 的语句；如果带或者不带的语句都有，则不带的会被忽略。</td>
+</tr>
+<tr>
+<td align="left"><code>resultOrdered</code></td>
+<td align="left">这个设置仅针对嵌套结果 select 语句适用：如果为 true，就是假设包含了嵌套结果集或是分组，这样的话当返回一个主结果行的时候，就不会发生有对前面结果集的引用的情况。 这就使得在获取嵌套的结果集的时候不至于导致内存不够用。默认值：<code>false</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>resultSets</code></td>
+<td align="left">这个设置仅对多结果集的情况适用。它将列出语句执行后返回的结果集并给每个结果集一个名称，名称是逗号分隔的。</td>
+</tr>
+</tbody></table>
+<h4 id="4-2-2-insert"><a href="#4-2-2-insert" class="headerlink" title="4.2.2 insert"></a>4.2.2 insert</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	Mapper接口方法:</span></span><br><span class="line"><span class="comment">	public int addPeo(People people);</span></span><br><span class="line"><span class="comment">	增删改不需要写参数类型(parameterType)与返回类型(resultType)</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"addPeo"</span>&gt;</span></span><br><span class="line">  	insert into people(id,name,age) values(#&#123;id&#125;,#&#123;name&#125;,#&#123;age&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-2-3-update"><a href="#4-2-3-update" class="headerlink" title="4.2.3 update"></a>4.2.3 update</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	Mapper接口方法:</span></span><br><span class="line"><span class="comment">	public int alterPeoById(People people);</span></span><br><span class="line"><span class="comment">	增删改不需要写参数类型(parameterType)与返回类型(resultType)</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">update</span> <span class="attr">id</span>=<span class="string">"alterPeoById"</span>&gt;</span></span><br><span class="line">   update people set name=#&#123;name&#125;,age=#&#123;age&#125; where id=#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">update</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-2-4-delete"><a href="#4-2-4-delete" class="headerlink" title="4.2.4 delete"></a>4.2.4 delete</h4><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">	Mapper接口方法:</span></span><br><span class="line"><span class="comment">	public int delPeoById(People people);</span></span><br><span class="line"><span class="comment">	增删改不需要写参数类型(parameterType)与返回类型(resultType)</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">delete</span> <span class="attr">id</span>=<span class="string">"delPeoById"</span>&gt;</span></span><br><span class="line">    delete from people where id=#&#123;id&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">delete</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="insert-update-delete元素的属性"><a href="#insert-update-delete元素的属性" class="headerlink" title="insert,update,delete元素的属性"></a>insert,update,delete元素的属性</h5><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>id</code></td>
+<td align="left">命名空间中的唯一标识符，可被用来代表这条语句。</td>
+</tr>
+<tr>
+<td align="left"><code>parameterType</code></td>
+<td align="left">将要传入语句的参数的完全限定类名或别名。这个属性是可选的，因为 MyBatis 可以通过类型处理器推断出具体传入语句的参数，默认值为未设置（unset）。</td>
+</tr>
+<tr>
+<td align="left"><code>parameterMap</code></td>
+<td align="left">这是引用外部 parameterMap 的已经被废弃的方法。请使用内联参数映射和 parameterType 属性。</td>
+</tr>
+<tr>
+<td align="left"><code>flushCache</code></td>
+<td align="left">将其设置为 true 后，只要语句被调用，都会导致本地缓存和二级缓存被清空，默认值：true（对于 insert、update 和 delete 语句）。</td>
+</tr>
+<tr>
+<td align="left"><code>timeout</code></td>
+<td align="left">这个设置是在抛出异常之前，驱动程序等待数据库返回请求结果的秒数。默认值为未设置（unset）（依赖驱动）。</td>
+</tr>
+<tr>
+<td align="left"><code>statementType</code></td>
+<td align="left">STATEMENT，PREPARED 或 CALLABLE 的一个。这会让 MyBatis 分别使用 Statement，PreparedStatement 或 CallableStatement，默认值：PREPARED。</td>
+</tr>
+<tr>
+<td align="left"><strong>useGeneratedKeys</strong></td>
+<td align="left"><strong>（仅对 insert 和 update 有用）这会令 MyBatis 使用 JDBC 的 getGeneratedKeys 方法来取出由数据库内部生成的主键（比如：像 MySQL 和 SQL Server 这样的关系数据库管理系统的自动递增字段），默认值：false。</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>keyProperty</strong></td>
+<td align="left"><strong>（仅对 insert 和 update 有用）唯一标记一个属性，MyBatis 会通过 getGeneratedKeys 的返回值或者通过 insert 语句的 selectKey 子元素设置它的键值，默认值：未设置（<code>unset</code>）。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。</strong></td>
+</tr>
+<tr>
+<td align="left"><code>keyColumn</code></td>
+<td align="left">（仅对 insert 和 update 有用）通过生成的键值设置表中的列名，这个设置仅在某些数据库（像 PostgreSQL）是必须的，当主键列不是表中的第一列的时候需要设置。如果希望使用多个生成的列，也可以设置为逗号分隔的属性名称列表。</td>
+</tr>
+<tr>
+<td align="left"><code>databaseId</code></td>
+<td align="left">如果配置了数据库厂商标识（databaseIdProvider），MyBatis 会加载所有的不带 databaseId 或匹配当前 databaseId 的语句；如果带或者不带的语句都有，则不带的会被忽略。</td>
+</tr>
+</tbody></table>
+<h3 id="4-3-主键生成方式、获取主键值"><a href="#4-3-主键生成方式、获取主键值" class="headerlink" title="4.3 主键生成方式、获取主键值"></a>4.3 <strong>主键生成方式、获取主键值</strong></h3><h4 id="4-3-1-主键生成方式"><a href="#4-3-1-主键生成方式" class="headerlink" title="4.3.1 主键生成方式"></a><strong>4.3.1</strong> <strong>主键生成方式</strong></h4><p>1) 支持主键自增，例如 MySQL 数据库 </p>
+<p>2) 不支持主键自增，例如 Oracle 数据库 </p>
+<h4 id="4-3-2-获取主键值"><a href="#4-3-2-获取主键值" class="headerlink" title="4.3.2 获取主键值"></a><strong>4.3.2</strong> <strong>获取主键值</strong></h4><p>1) 若数据库支持自动生成主键的字段（比如 MySQL 和 SQL Server），则可以设置 useGeneratedKeys=”true”，然后再把 keyProperty 设置到目标属性上。 </p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"addPeo"</span> <span class="attr">useGeneratedKeys</span>=<span class="string">"true"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span> <span class="attr">databaseId</span>=<span class="string">"mysql"</span>&gt;</span></span><br><span class="line">  	insert into people(name,age) values(#&#123;name&#125;,#&#123;age&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	测试:</span></span><br><span class="line"><span class="comment">	People people =new People("test1",20);</span></span><br><span class="line"><span class="comment">	int addPeoById = mapper.addPeo(people);</span></span><br><span class="line"><span class="comment">	System.out.println(people.getId());</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>2) 而对于不支持自增型主键的数据库（例如 Oracle），则可以使用 selectKey 子元素：selectKey 元素将会首先运行，id 会被设置，然后插入语句会被调用 。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment">	order	这可以被设置为 BEFORE 或 AFTER。如果设置为 BEFORE，那么它会首先生成主键，设置 keyProperty 然后执行插入语句。如果设置为 AFTER，那么先执行插入语句，然后是 selectKey 中的语句 - 这和 Oracle 数据库的行为相似，在插入语句内部可能有嵌入索引调用。</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insertEmployee"</span> <span class="attr">databaseId</span>=<span class="string">"oracle"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">order</span>=<span class="string">"BEFORE"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span> <span class="attr">resultType</span>=<span class="string">"integer"</span>&gt;</span> </span><br><span class="line">	select employee_seq.nextval from dual </span><br><span class="line"><span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span> </span><br><span class="line">	insert into orcl_employee(id,last_name,email,gender) values(#&#123;id&#125;,#&#123;lastName&#125;,#&#123;email&#125;,#&#123;gender&#125;) </span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"insertEmployee"</span>  <span class="attr">databaseId</span>=<span class="string">"oracle"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">selectKey</span> <span class="attr">order</span>=<span class="string">"AFTER"</span> <span class="attr">keyProperty</span>=<span class="string">"id"</span> <span class="attr">resultType</span>=<span class="string">"integer"</span>&gt;</span> </span><br><span class="line">	select employee_seq.currval from dual </span><br><span class="line"><span class="tag">&lt;/<span class="name">selectKey</span>&gt;</span> </span><br><span class="line">	insert into orcl_employee(id,last_name,email,gender) values(employee_seq.nextval,#&#123;lastName&#125;,#&#123;email&#125;,#&#123;gender&#125;) </span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-4-参数传递"><a href="#4-4-参数传递" class="headerlink" title="4.4 参数传递"></a><strong>4.4</strong> <strong>参数传递</strong></h3><h4 id="4-4-1-参数传递的方式"><a href="#4-4-1-参数传递的方式" class="headerlink" title="4.4.1 参数传递的方式"></a><strong>4.4.1</strong> <strong>参数传递的方式</strong></h4><h5 id="1-单个参数"><a href="#1-单个参数" class="headerlink" title="1.单个参数"></a>1.单个参数</h5><p>可以接受基本类型，对象类型。这种情况 MyBatis 可直接使用这个参数，不需要经过任何处理。 </p>
+<h5 id="2-多个参数"><a href="#2-多个参数" class="headerlink" title="2.多个参数"></a>2.多个参数</h5><p>任意多个参数，都会被 MyBatis 重新包装成一个 Map 传入。Map 的 key 是 param1， </p>
+<p>param2，或者 0，1…，值就是参数的值 </p>
+<h5 id="3-命名参数"><a href="#3-命名参数" class="headerlink" title="3.命名参数"></a>3.命名参数</h5><p>为参数使用@Param 起一个名字，MyBatis 就会将这些参数封装进 map 中，key 就是我 </p>
+<p>们自己指定的名字 </p>
+<h5 id="4-POJO"><a href="#4-POJO" class="headerlink" title="4.POJO"></a>4.POJO</h5><p>当这些参数属于我们业务 POJO 时，我们直接传递 POJO </p>
+<h5 id="5-Map"><a href="#5-Map" class="headerlink" title="5.Map"></a>5.Map</h5><p>我们也可以封装多个参数为 map，直接传递 </p>
+<h5 id="6-Collection-Array"><a href="#6-Collection-Array" class="headerlink" title="6.Collection/Array"></a>6.Collection/Array</h5><p>会被 MyBatis 封装成一个 map 传入, Collection 对应的 key 是 collection,Array 对应的 key </p>
+<p>是 array. 如果确定是 List 集合，key 还可以是 list. </p>
+]]></content>
   </entry>
   <entry>
     <title>Spring</title>
